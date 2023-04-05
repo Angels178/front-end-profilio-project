@@ -1,0 +1,59 @@
+body {
+    display: grid;
+    background-image: url(assets/peakpx.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    grid-template-columns: span 3;
+    grid-template-rows: span 3;
+}
+
+header {
+    text-align: center;
+    background-color: peachpuff;
+    grid-template-columns: span 3;
+}
+h1 {
+    font-size: 50px;
+    font-family: sans-serif;
+    font-style: oblique;
+    color: black;
+}
+
+.text {
+    font-size: x-large;
+}
+
+.submit-button {
+    background-color: #ee4131;
+    font-size: x-large;
+}
+
+.submit-button:hover {
+    background-color: red;
+    color: white
+}
+
+main {
+    display: grid;
+    font-size: x-large;
+    grid-template-columns: 1 span 3;
+    grid-template-rows: span 3;
+}
+
+article.pokemon-name {
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid;
+    margin: 10px 500px 10px 500px;
+    background-color: lightblue;
+}
+
+@media (min-width: 390px) and (max-width: 844px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+    main {
+        grid-template-columns: 1fr;
+    }
+}

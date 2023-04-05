@@ -18,6 +18,8 @@ let height = document.querySelector(`.height`);
 
 let weight = document.querySelector(`.weight`);
 
+let id = document.querySelector(`.id`);
+
 let div = document.querySelector(`div`);
 
 async function fetchData(based_url) {
@@ -25,6 +27,7 @@ async function fetchData(based_url) {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${based_url}/`
     );
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -34,20 +37,21 @@ async function fetchData(based_url) {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  let character = document.querySelector(`input[type='text']`);
-  // let search = character.value;
+
   fetchData(event.target.character.value)
     .then((element) => {
-      console.log(element);
+      if (!element) {
+        alert(`Error! Please enter the correct name!`);
+      }
       displayName = element.name;
-      console.log(displayName);
-      
       h2.innerHTML = displayName;
-      ablity.innerHTML = `Ablity : ${element.abilities[0].ability.name}`;
+      id.innerHTML = `ID Number: ${element.id}`;
       type.innerHTML = `Type : ${element.types[0].type.name}`;
+      ablity.innerHTML = `Ablity : ${element.abilities[0].ability.name}`;
       height.innerHTML = `Height: ${element.height}`;
       weight.innerHTML = `Weight: ${element.weight}`;
     })
+
     .catch((error) => {
       console.log(error);
     });
